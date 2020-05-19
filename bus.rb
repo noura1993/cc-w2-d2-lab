@@ -11,12 +11,16 @@ class Bus
         return "Brum brum"
     end
 
+    def count_passengers()
+        return @passengers.length
+    end
+
     def pick_up(passenger)
         @passengers.push(passenger)
     end
 
-    def count_passengers()
-         return @passengers.length
+    def drop_off(passenger)
+        @passengers.delete(passenger)
     end
 
 end

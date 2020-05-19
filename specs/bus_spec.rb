@@ -21,14 +21,25 @@ class BusTest < MiniTest::Test
        assert_equal("Brum brum", @bus.drive) 
     end
 
+    def test_count_passengers()
+        result = @bus.count_passengers()
+        assert_equal(0, result)
+    end
+
     def test_pick_up()
         @bus.pick_up(@person)
         assert_equal([@person], @bus.passengers)
     end
 
-    def test_count_passengers()
-        result = @bus.count_passengers()
-        assert_equal(0, result)
+    def test_drop_off()
+        @bus.drop_off(@person)
+        assert_equal([], @bus.passengers)
+    end
+
+    def test_pick_up_then_drop_off()
+        @bus.pick_up(@person)
+        @bus.drop_off(@person)
+        assert_equal([], @bus.passengers)
     end
 
 end
