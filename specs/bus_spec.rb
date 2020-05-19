@@ -2,6 +2,7 @@ require('minitest/autorun')
 require('minitest/reporters')
 require_relative('../bus')
 require_relative('../person')
+require_relative('../bus_stop')
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
@@ -45,6 +46,17 @@ class BusTest < MiniTest::Test
     def test_empty()
         @bus.empty()
         assert_equal([], @bus.passengers)
+    end
+
+    def test_pick_up_from_stop()
+        bus_stop = BusStop.new("Waverley")
+        bus_stop.add_person(@person)
+        bus_stop.add_person(@person)
+
+        @bus.pick_up_from_stop(bus_stop)
+
+        assert_equal([], bus_stop.queue)
+        assert_equal([@person, @person], @bus.passengers)
     end
 
 end
