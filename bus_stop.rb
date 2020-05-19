@@ -6,4 +6,8 @@ class BusStop
         @queue = []
     end
 
+    def add_person(person)
+        @queue.push(person)
+    end
+
 end
