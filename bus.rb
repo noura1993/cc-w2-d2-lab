@@ -23,4 +23,8 @@ class Bus
         @passengers.delete(passenger)
     end
 
+    def empty()
+        @passengers = []
+    end
+
 end
